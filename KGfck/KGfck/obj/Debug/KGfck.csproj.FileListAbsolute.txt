@@ -1,0 +1,16 @@
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck.csprojResolveAssemblyReference.cache
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\MainWindow.g.cs
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\App.g.cs
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\GeneratedInternalTypeHelper.g.cs
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck_MarkupCompile.cache
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck_MarkupCompile.lref
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\bin\Debug\KGfck.exe.config
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\bin\Debug\KGfck.exe
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\bin\Debug\KGfck.pdb
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\MainWindow.baml
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck.g.resources
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck.Properties.Resources.resources
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck.csproj.GenerateResource.Cache
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck.csproj.CoreCompileInputs.cache
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck.exe
+c:\users\лиза\documents\visual studio 2017\Projects\KGfck\KGfck\obj\Debug\KGfck.pdb
