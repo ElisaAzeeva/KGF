@@ -1,187 +1,179 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Windows.Input;
-
 
 namespace KGfck
 {
-    public class Dipyramid: Control
+    public class Dipyramid : Control
     {
-        static int NumberOfDots = 12;
+        static int NumberOfAngles = 12;
         //double point with 12-angle
-        double[][] points = new double[NumberOfDots + 2][];
-        double Angle;
-        //public static void RotationY(double phi, double[][] point)
-        //{
-        //    point = { { Math.Cos(phi),    0, -Math.Sin(phi),  0 },{ 0,              1,              0,  0 },{ Math.Sin(phi),    0,  Math.Cos(phi),  0 },{ 0,              0,              0,  1 }};
-        //}
+        public double[][] points = new double[NumberOfAngles + 2][];
+        public double[][] pointsIzometr = new double[NumberOfAngles + 2][];
+        public double[][] pointsStart = new double[NumberOfAngles + 2][];
+        double[][] pointsAxis = new double[10][];
+        //variable for change crystal scale
+        public double scaleX = 1;
+        public double scaleY = 1;
+        public double scaleZ = 1;
+        //variable for crystal movement
+        public double moveX = 0;
+        public double moveY = 0;
+        public double moveZ = 0;
+        //angle start position
+        public Point rotAngle = new Point(0, 0);
+        public double rotAngleZ = 0;
+
+        public Dipyramid()
+        {
+            DefultTransform();
+        }
+
         protected override void OnRender(DrawingContext drawingContext)
         {
-            drawingContext.DrawRectangle(Background, null, new Rect(0, 0, ActualWidth, ActualHeight));
-           // base.OnRender(drawingContext);
-
-            //Dipyramid d = new Dipyramid();          
-            //RotationY(Math.PI/4);
-            Angle = rotAngle.Y;
-            DefultTransform();
             Apply();
             Draw(drawingContext);
-
-
-            //var result = new double[points.Length][];
-            //for (int i = 0; i < points.Length; i++)
-            //    result[i] = TransformPoint(points[i], Matrix.RotationX(0.86));
         }
         public void DefultTransform()
         {
-            double angle = 2 * Math.PI / NumberOfDots;
-            double R = 100;
-            for (int i = 0; i < NumberOfDots; i++)
+            double angle = 2 * Math.PI / NumberOfAngles;
+            double R = 50;
+            for (int i = 0; i < NumberOfAngles; i++)
             {
                 double a = i * angle;
                 double x = R * Math.Cos(a);
                 double y = R * Math.Sin(a);
-                Pen pen = new Pen(Brushes.ForestGreen, 1);
-                points[i] = new double[] { x, 1, y, 1 };
-                //Pen pen = new Pen(Color.Black, 1);
-
-                //izometr
-                double xAngle = Math.PI / 6;
-                double yAngle = Math.PI / 4;
-                double zAngle3 = Math.PI / 3.55;
+                points[i] = new double[] { x , 1, y , 1 };
             }
-            points[NumberOfDots] = new double[] { 1, 1, 1, 1 };
-            points[NumberOfDots][0] = 120;
-            points[NumberOfDots][1] = 120;
-            points[NumberOfDots][2] = 120;
-            points[NumberOfDots][3] = 1;
+            points[NumberOfAngles] = new double[] { 1, 50, 1, 1 };
+            points[NumberOfAngles + 1] = new double[] { 1, -50, 1, 1 };
 
-            points[NumberOfDots + 1] = new double[] { 1, 1, 1, 1 };
-            points[NumberOfDots + 1][0] = 120;
-            points[NumberOfDots + 1][1] = -120;
-            points[NumberOfDots + 1][2] = 120;
-            points[NumberOfDots + 1][3] = 1;
+            //rotate on 90 degrees about OX
+            Point p = new Point(Math.PI / 2, 0);
+            for (int i = 0; i < NumberOfAngles + 2; i++)
+                Rotation.RotationTransformX(ref points[i], p);
+            
+            points.CopyTo(pointsIzometr, 0);
+        }
+        private void GetIzometr()
+        {
+            Point p = new Point(9*Math.PI / 8, 0);
+            for (int i = 0; i < NumberOfAngles+2; i++)
+            {
+                Rotation.RotationTransformZ(ref pointsIzometr[i], 5*Math.PI / 4);
+                Rotation.RotationTransformX(ref pointsIzometr[i], p);
+                Translation.MoveTransformPoint(ref pointsIzometr[i],900,0,600);
+            }
         }
         public void Draw(DrawingContext dc)
         {
-            Pen pen = new Pen(Brushes.ForestGreen, 1);
+            Pen pen = new Pen(Brushes.Magenta, 1);
+            GetIzometr();
             //centre top
-            var p3 = new Point(points[NumberOfDots][0], points[NumberOfDots][2]);
+            var p3 = new Point(pointsIzometr[NumberOfAngles][0], pointsIzometr[NumberOfAngles][2]);
             //center bottom
-            var p4 = new Point(points[NumberOfDots + 1][0], points[NumberOfDots + 1][2]);
-
-            for (int i = 0; i < NumberOfDots; i++)
+            var p4 = new Point(pointsIzometr[NumberOfAngles + 1][0], pointsIzometr[NumberOfAngles + 1][2]);
+            //loop for connection of dipyramid lines
+            for (int i = 0; i < NumberOfAngles; i++)
             {
-                if (i == NumberOfDots - 1)
+                if (i == NumberOfAngles - 1)
                 {
-                    var p1 = new Point(points[0][0] + 120, points[0][2] + 120);
-                    var p2 = new Point(points[i][0] + 120, points[i][2] + 120);
+                    var p1 = new Point(pointsIzometr[0][0], pointsIzometr[0][2]);
+                    var p2 = new Point(pointsIzometr[i][0], pointsIzometr[i][2]);
                     dc.DrawLine(pen, p1, p2);
                     dc.DrawLine(pen, p2, p3);
                     dc.DrawLine(pen, p2, p4);
-                    //temp solution
-                    var ptemp = new Point(points[i-1][0] + 120, points[i-1][2] + 120);
+                    var ptemp = new Point(pointsIzometr[i - 1][0], pointsIzometr[i - 1][2]);
                     dc.DrawLine(pen, p2, ptemp);
                     dc.DrawLine(pen, p3, ptemp);
                     dc.DrawLine(pen, p4, ptemp);
-                    //end temp solution
                 }
-                else if(i != 0)
+                else if (i != 0)
                 {
-                    var p1 = new Point(points[i - 1][0] + 120, points[i - 1][2] + 120);
-                    var p2 = new Point(points[i][0] + 120, points[i][2] + 120);
+                    var p1 = new Point(pointsIzometr[i - 1][0], pointsIzometr[i - 1][2]);
+                    var p2 = new Point(pointsIzometr[i][0], pointsIzometr[i][2]);
                     dc.DrawLine(pen, p1, p2);
                     dc.DrawLine(pen, p1, p3);
                     dc.DrawLine(pen, p1, p4);
 
                 }
-            }
-
-        }
-        public double[][] GetTransformMatrix()
+            }    
+        }       
+        public void Apply()
         {
-            var cos = Math.Cos(Angle);
-            var sin = Math.Sin(Angle);
-            //x
-                    return new double[][] {
-                        new double[] {  1,    0,   0,  0 },
-                        new double[] {  0,  cos, sin,  0 },
-                        new double[] {  0, -sin, cos,  0 },
-                        new double[] {  0,    0,   0,  1 }
-                    };
-        }
-        protected void TransformPoint(ref double[] point, double[][] transform)
-        {
-            var result = new double[4];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i <= NumberOfAngles + 1; i++)
             {
-                result[i] = 0;
-
-                // Unroll loop.
-                //for (int j = 0; j < 4; j++)
-                //    result[i] += transform[j][i] * point[j];
-
-                result[i] += transform[0][i] * point[0]
-                           + transform[1][i] * point[1]
-                           + transform[2][i] * point[2]
-                           + transform[3][i] * point[3];
+                if (rotAngle.X != 0)
+                {
+                    Rotation.RotationTransformX(ref points[i], rotAngle);                    
+                }
+                if (rotAngle.Y != 0)
+                {
+                    Rotation.RotationTransformY(ref points[i], rotAngle);                    
+                }
+                if (rotAngleZ != 0)
+                {
+                    Rotation.RotationTransformZ(ref points[i], rotAngleZ);                    
+                }
+                if(scaleX != 1)
+                {
+                    Dilation.StretchTransformX(ref points[i], scaleX);                    
+                }
+                if (scaleY != 1)
+                {
+                    Dilation.StretchTransformY(ref points[i], scaleY);                    
+                }
+                if (scaleZ != 1)
+                {
+                    Dilation.StretchTransformZ(ref points[i], scaleZ);                    
+                }
+                if ((moveX != 0)||(moveY !=0 )||(moveZ != 0))
+                {
+                    Translation.MoveTransformPoint(ref points[i], moveX, moveY, moveZ);
+                }
             }
-            point = result;
-        }
-        public virtual void Apply()
-        {
-            for (int i = 0; i < NumberOfDots+1; i++)
-                TransformPoint(ref points[i], GetTransformMatrix());
-        }
-        Point rotAngle = new Point(-Math.PI / 4, Math.PI / 8);
-        Point startRotAngle = new Point(-Math.PI / 4, Math.PI / 8);
-        Point startMousePos;
-        double scale = 1;
 
-        protected override void OnMouseDown(MouseButtonEventArgs e)
-        {
-            Mouse.Capture(this);
-            startMousePos = Mouse.GetPosition(this);
+            //avoid accumulation angle, distance and zoom
+            rotAngle.X = 0;
+            rotAngle.Y = 0;
+            rotAngleZ = 0;
+            scaleX = 1;
+            scaleY = 1;
+            scaleZ = 1;
+            moveX = 0;
+            moveY = 0;
+            moveZ = 0;
+            points.CopyTo(pointsIzometr, 0);
         }
 
-        protected override void OnMouseUp(MouseButtonEventArgs e)
+        public void ReflectX()
         {
-            Mouse.Capture(null);
-            startRotAngle = rotAngle;
-        }
+            for (int i = 0; i <= NumberOfAngles + 1; i++)
+            {
+                Mirror.MirrorTransformX(ref points[i]);
+            }
 
-        protected override void OnMouseMove(MouseEventArgs e)
+        }
+        public void ReflectY()
         {
-            if (Mouse.Captured != this)
-                return;
-            rotAngle = startRotAngle + (e.GetPosition(this) - startMousePos) * 0.01;
+            for (int i = 0; i <= NumberOfAngles + 1; i++)
+            {
+                Mirror.MirrorTransformY(ref points[i]);
+            }
+
+        }
+        public void ReflectZ()
+        {
+            for (int i = 0; i <= NumberOfAngles + 1; i++)
+            {
+                Mirror.MirrorTransformZ(ref points[i]);
+            }
+
+        }
+        public void reDraw()
+        {
             InvalidateVisual();
         }
-
-        protected override void OnMouseWheel(MouseWheelEventArgs e)
-        {
-            scale = Math.Max(scale + e.Delta * 0.001, 0.5);
-            InvalidateVisual();
-        }
-        //protected double[] TransformPoint(double[] point, double[][] transform)
-        //{
-        //    var result = new double[4];
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        result[i] = 0;
-        //        for (int j = 0; j < 4; j++)
-        //            result[i] += transform[j][i] * point[j];
-        //    }
-        //    return result;
-        //}
     }
 }

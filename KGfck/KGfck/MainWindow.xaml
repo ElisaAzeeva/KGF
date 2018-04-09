@@ -5,21 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KGfck"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid x:Name="gr1">
+        Title="Dipyramid" Height="1178.25" Width="1421.924" Icon="C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\Resources\Zircon.ico">
+    <Grid x:Name="gr1" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="23*"/>
         </Grid.ColumnDefinitions>
-        
-        <local:Dipyramid
-            x:Name="local_dipyr"
-            
-            />
-        <StackPanel Grid.Column="1" >
-            
-        </StackPanel>
 
-        <Button x:Name="Start" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="39" Margin="10,41,0,0" VerticalAlignment="Top" Width="87" Click="Start_Click"/>
+        <!--<local:Dipyramid
+            x:Name="local_dipyr"
+            />-->
+        <Slider Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                Name="OX_rotate"
+                Margin="48,73,0,0" 
+                VerticalAlignment="Top" 
+                Maximum="360" 
+                ValueChanged="SliderOX_rotate_ValueChanged" Width="109" Height="18"/>
+
+
+
+        <Slider x:Name="OY_rotate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,118,0,0" 
+            VerticalAlignment="Top" 
+            Maximum="360" Width="109" ValueChanged="SliderOY_rotate_ValueChanged" Height="18"/>
+        <Slider x:Name="OZ_rotate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,163,0,0" 
+            VerticalAlignment="Top" 
+            Maximum="360" Width="109" ValueChanged="SliderOZ_rotate_ValueChanged" Height="18"/>
+        <Slider x:Name="OX_delatate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,254,0,0" 
+            VerticalAlignment="Top" 
+            Value="1"
+            Maximum="2" Width="109" ValueChanged="SliderOX_delatate_ValueChanged" Height="18"/>
+        <Slider x:Name="OY_delatate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,294,0,0" 
+            VerticalAlignment="Top"
+            Value="1"
+            Maximum="2" Width="109" ValueChanged="SliderOY_delatate_ValueChanged" Height="18"/>
+        <Slider x:Name="OZ_delatate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,335,0,0" 
+            VerticalAlignment="Top"
+            Value="1"
+            Maximum="2" Width="109" ValueChanged="SliderOZ_delatate_ValueChanged" Height="18"/>
+        <Slider x:Name="OX_translate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,420,0,0" 
+            VerticalAlignment="Top" Width="109" ValueChanged="SliderOX_translate_ValueChanged" Minimum="-10" SmallChange="0.01" Height="18"/>
+        <Slider x:Name="OY_translate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,460,0,0" 
+            VerticalAlignment="Top" Width="109" ValueChanged="SliderOY_translate_ValueChanged" Minimum="-10" Height="18"/>
+        <Slider x:Name="OZ_translate" Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="48,500,0,0" 
+            VerticalAlignment="Top" Width="109" ValueChanged="SliderOZ_translate_ValueChanged" Minimum="-10" Height="18"/>
+        <Button Content="Default" Grid.Column="1" HorizontalAlignment="Left" Margin="10,611,0,0" VerticalAlignment="Top" Width="75" Click="ButtonDefault_Click" Height="20"/>
+        <CheckBox x:Name="MirrorOX" Content="Mirror OX" Grid.Column="1" HorizontalAlignment="Left" Margin="15,543,0,0" VerticalAlignment="Top" Checked="CheckBoxMirrorOX_Checked" Unchecked="CheckBoxMirrorOX_Checked" Height="15" Width="73"/>
+        <CheckBox x:Name="MirrorOY" Content="Mirror OY" Grid.Column="1" HorizontalAlignment="Left" Margin="15,561,0,0" VerticalAlignment="Top" Checked="CheckBoxMirrorOY_Checked" Unchecked="CheckBoxMirrorOY_Checked" Height="15" Width="72"/>
+        <CheckBox x:Name="MirrorOZ" Content="Mirror OZ" Grid.Column="1" HorizontalAlignment="Left" Margin="15,578,0,0" VerticalAlignment="Top" Checked="CheckBoxMirrorOZ_Checked" Unchecked="CheckBoxMirrorOZ_Checked" Height="15" Width="72" />
+        <Label x:Name="rotX" Content="{Binding ElementName=OX_rotate,Path = Value}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,91,0,0" VerticalAlignment="Top" Width="77" FontSize="11"/>
+        <Label x:Name="rotY" Content="{Binding ElementName=OY_rotate,Path = Value}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,136,0,0" VerticalAlignment="Top"  Width="77" FontSize="11"/>
+        <Label x:Name="rotZ" Content="{Binding ElementName=OZ_rotate,Path = Value}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,181,0,0" VerticalAlignment="Top" Width="94" FontSize="11"/>
+        <Label x:Name="label_rot" Content="Rotation" Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="10,19,0,0" VerticalAlignment="Top" Width="109" FontSize="18"/>
+        <Label x:Name="label_OX" Content="OX" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,68,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.495,0.187"/>
+        <Label x:Name="label_OY" Content="OY" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,111,0,0" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="label_OZ" Content="OZ" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,156,0,0" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="label_delatation" Content="Delatation" Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="10,208,0,0" VerticalAlignment="Top" Width="109" FontSize="18"/>
+        <Label x:Name="label_translation" Content="Translation" Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="10,380,0,0" VerticalAlignment="Top" Width="109" FontSize="18"/>
+        <Label x:Name="label_OX_Copy" Content="OX" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,247,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.495,0.187"/>
+        <Label x:Name="label_OY_Copy" Content="OY" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,290,0,0" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="label_OZ_Copy" Content="OZ" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,335,0,0" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="label_OX_Copy1" Content="OX" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,414,0,0" VerticalAlignment="Top" Width="33" RenderTransformOrigin="0.495,0.187"/>
+        <Label x:Name="label_OY_Copy1" Content="OY" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,457,0,0" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="label_OZ_Copy1" Content="OZ" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,502,0,0" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="delX" Content="{Binding Value, ElementName=OX_delatate}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,272,0,0" VerticalAlignment="Top" Width="77" FontSize="11"/>
+        <Label x:Name="delY" Content="{Binding Value, ElementName=OY_delatate}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,312,0,0" VerticalAlignment="Top" Width="77" FontSize="11"/>
+        <Label x:Name="delZ" Content="{Binding Value, ElementName=OZ_delatate}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,353,0,0" VerticalAlignment="Top" Width="77" FontSize="11"/>
+        <Label x:Name="transX" Content="{Binding Value, ElementName=OX_translate}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,438,0,0" VerticalAlignment="Top" Width="77" FontSize="11"/>
+        <Label x:Name="transY" Content="{Binding Value, ElementName=OY_translate}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,478,0,0" VerticalAlignment="Top" Width="77" FontSize="11"/>
+        <Label x:Name="transZ" Content="{Binding Value, ElementName=OZ_translate}" ContentStringFormat="F" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="48,518,0,0" VerticalAlignment="Top" Width="77" FontSize="11"/>
     </Grid>
 </Window>

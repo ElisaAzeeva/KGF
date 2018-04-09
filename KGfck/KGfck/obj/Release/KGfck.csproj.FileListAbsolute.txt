@@ -1,0 +1,15 @@
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\bin\Release\KGfck.exe.config
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\bin\Release\KGfck.exe
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\bin\Release\KGfck.pdb
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck.csprojResolveAssemblyReference.cache
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\MainWindow.g.cs
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\App.g.cs
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck_MarkupCompile.cache
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck_MarkupCompile.lref
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\MainWindow.baml
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck.g.resources
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck.Properties.Resources.resources
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck.csproj.GenerateResource.Cache
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck.csproj.CoreCompileInputs.cache
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck.exe
+C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Release\KGfck.pdb

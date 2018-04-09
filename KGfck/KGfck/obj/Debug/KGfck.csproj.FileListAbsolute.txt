@@ -20,7 +20,6 @@ C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\bin\Debu
 C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Debug\KGfck.csprojResolveAssemblyReference.cache
 C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Debug\MainWindow.g.cs
 C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Debug\App.g.cs
-C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Debug\KGfck_MarkupCompile.cache
 C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Debug\KGfck_MarkupCompile.lref
 C:\Users\Лиза\Documents\Visual Studio 2017\Projects\KGF\KGfck\KGfck\obj\Debug\MainWindow.baml
